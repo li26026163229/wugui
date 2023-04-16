@@ -1,27 +1,46 @@
 import Vue from 'vue'
+//引入 路由 的文件
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Movie from '../views/home/Movie.vue'
 
+//使用插件
 Vue.use(VueRouter)
 
+//定义路由表
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'Movie',
+    component: Movie
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: '/video',
+    name: 'Video',
+    //路由懒加载 当触发点击跳转到这一页时，才加载这一页的组件 
+    component: () => import(/* webpackChunkName: "video" */ '../views/Video.vue')
+  },
+  {
+    path: '/minivideo',
+    name: 'MiniVideo',
+    component: () => import(/* webpackChunkName: "minivideo" */ '../views/MiniVideo.vue')
+  },
+  {
+    path: '/show',
+    name: 'Show',
+    component: () => import(/* webpackChunkName: "show" */ '../views/Show.vue')
+  },
+  {
+    path: '/me',
+    name: 'Me',
+    component: () => import(/* webpackChunkName: "me" */ '../views/Me.vue')
+  },
+
 ]
 
+//创建 路由对象
 const router = new VueRouter({
   routes
 })
 
+//将路由对象输出
 export default router
